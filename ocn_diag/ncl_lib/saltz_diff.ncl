@@ -13,7 +13,7 @@ begin
   if (isatt(salt_1,"_FillValue"))
     missing = salt_1@_FillValue
   else
-    salt_1@_FillValue = default_fillvalue(typeof(salt_t))
+    salt_1@_FillValue = default_fillvalue(typeof(salt_1))
     missing = salt_1@_FillValue
   end if
   if (isatt(salt_1,"scale_factor")) then
@@ -67,13 +67,17 @@ begin
     field_diff = field_1 - field_2
     nlev = 21
     if ( depth(l) .le. 800 ) then
-      dmin  =  28.0
-      dmax  =  38.0
-      dmin2 = -1.0
+;mvr      dmin  =  28.0
+;mvr      dmax  =  38.0
+      dmin  = min(field_1)
+      dmax  = max(field_1)
+      dmin2 = -10.0
       dmax2 =  1.0
     else
-      dmin  = 33.0
-      dmax  = 37.0
+;mvr      dmin  = 33.0
+;mvr      dmax  = 37.0
+      dmin  = min(field_1)
+      dmax  = max(field_1)
       dmin2 = -0.4
       dmax2 =  0.4
     end if
